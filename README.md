@@ -1,87 +1,76 @@
-# Daisy (Love Assistant) - Intelligent Chat Analysis & Reply System
+# Daisy (恋爱僚机) - 智能聊天分析与回复助手
 
-> **Project Goal**: A desktop application that analyzes chat screenshots using OCR and generates high-EQ, "pursuit-style" replies using Large Language Models (LLMs).
-> **Core Philosophy**: "Attraction is about attitude, not pleasing."
+Daisy 是一个基于 **Streamlit** 和 **LLM (大语言模型)** 构建的智能恋爱助手。它可以分析你与 Crush (心动对象) 的聊天记录截图，通过 OCR 提取文字，并结合心理学知识为你生成高情商的回复建议。
 
----
+## 🌟 核心功能
 
-## 1. Installation & Setup
+*   **📷 聊天截图分析**: 上传聊天记录截图，自动识别双方对话内容。
+*   **🧩 长图智能拼接**: 支持一次性上传多张连续截图，系统自动去重并拼接成长图 (V1.1 新增)。
+*   **🧠 高情商回复生成**: 基于深度定制的 Prompt，提供“幽默推拉”、“情绪价值”、“高冷神秘”等多种风格的回复。
+*   **💬 可编辑对话**: OCR 识别有误？别担心，你可以手动修正每一条消息的内容和角色。
+*   **🌍 多语言支持**: 界面支持中英文切换，AI 会根据你的界面语言设定自动调整回复语言。
+*   **🔍 深度思考模式**: 集成 DeepSeek-R1 模型，展示 AI 完整的推理思考过程。
 
-### Prerequisites
-- Python 3.10+
-- CUDA-capable GPU (Recommended for faster OCR)
+## 🛠️ 技术栈
 
-### Step 1: Install Dependencies
-The system requires PyTorch with GPU support. The installation script will handle this automatically if you run the setup command, but due to large file sizes, it's recommended to install manually:
+*   **Frontend**: Streamlit
+*   **OCR**: PaddleOCR / EasyOCR (支持 GPU 加速)
+*   **LLM**: OpenAI API (兼容 DeepSeek, GPT-4)
+*   **Image Processing**: OpenCV (去噪、锐化、拼接)
 
-1.  **Install PyTorch (GPU Version)**:
-    ```bash
-    pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
-    ```
-    *Note: Adjust `cu124` to your CUDA version if needed.*
+## 🚀 快速开始
 
-2.  **Install Other Dependencies**:
-    ```bash
-    pip install -r requirements.txt
-    ```
+### 1. 克隆项目
 
-### Step 2: Configure Environment
-1.  Copy `.env.example` to `.env`.
-2.  Add your OpenAI or DeepSeek API Key.
-    *   **OpenAI**: Use `https://api.openai.com/v1` (default).
-    *   **DeepSeek**: Use `https://api.deepseek.com`.
+```bash
+git clone https://github.com/your-username/Daisy.git
+cd Daisy
+```
 
-### Step 3: Run the Application
+### 2. 安装依赖
+
+建议使用 Python 3.10+ 环境：
+
+```bash
+pip install -r requirements.txt
+```
+
+### 3. 配置环境变量
+
+复制 `.env.example` 为 `.env` 并填入你的 API Key：
+
+```bash
+cp .env.example .env
+```
+
+在 `.env` 文件中：
+
+```ini
+OPENAI_API_KEY=sk-xxxxxx
+OPENAI_BASE_URL=https://api.deepseek.com  # 如果使用 DeepSeek
+```
+
+### 4. 运行应用
+
 ```bash
 streamlit run app.py
 ```
 
----
+## 📅 开发进度
 
-## 2. System Architecture & Flow
+- [x] 核心项目结构搭建
+- [x] OCR 引擎集成 (支持 GPU)
+- [x] 聊天记录解析逻辑 (基于坐标的角色判定)
+- [x] LLM 客户端与“反舔狗”提示词设计
+- [x] Streamlit 基础界面
+- [x] 高级图像预处理 (去噪) - V1.1
+- [x] 多图垂直自动拼接 - V1.1
+- [ ] 针对不同聊天 App 的 UI 适配 (微信/Telegram/WhatsApp) - 规划中 V1.2
 
-### 2.1 Core Workflow (Mermaid)
+## 🤝 贡献
 
-```mermaid
-graph TD
-    A[User Uploads Screenshot] --> B{Image Pre-processing}
-    B -->|Grayscale/Binarization| C[OCR Engine (EasyOCR)]
-    C --> D[Raw Text Data]
-    
-    subgraph "Structural Analysis Layer"
-    D --> E[Identify Text Bubbles]
-    E --> F{Role Classification}
-    F -->|Right Side/Green Bubble| G[Me - User]
-    F -->|Left Side/White Bubble| H[Target - Crush]
-    end
-    
-    subgraph "Cognitive Layer (LLM)"
-    H --> I[Extract Last 3-5 Messages]
-    I --> J[Inject 'No-Simp' Persona Prompts]
-    J --> K[Call LLM API (GPT/Yi/Wenxin)]
-    end
-    
-    K --> L[Generate 3 Reply Options]
-    L --> M[User Selection & Feedback]
-```
+欢迎提交 Issue 和 PR！让我们一起把 Daisy 变得更聪明。
 
----
+## 📄 许可证
 
-## 3. "No Simp" Reply Rules (The Soul of Daisy)
-
-1.  **Rule of Investment Match**: Never write a paragraph in response to a one-word reply. Match the target's energy and length.
-2.  **Rule of Emotional Independence**: If the target is venting/complaining, offer *perspective* or *playful teasing*, not just blind agreement or "poor you."
-3.  **Rule of Mystery**: Do not answer every question directly. Use humor, deflection, or counter-questions to keep the conversation dynamic.
-4.  **Rule of Self-Respect**: If the target is cold or rude, call it out playfully or withdraw attention. Do not apologize unless you actually made a mistake.
-5.  **Rule of Value Display**: Subtly imply you have a life outside the chat. Do not be "always available."
-
----
-
-## 4. Development Status
-- [x] Core Project Structure
-- [x] OCR Engine Implementation (GPU-enabled)
-- [x] Chat Parsing Logic (Coordinate-based Role Distinction)
-- [x] LLM Client with "No-Simp" Prompts
-- [x] Streamlit UI (Basic)
-- [ ] Advanced Image Preprocessing (Noise Removal) - Planned V1.1
-- [ ] Multi-image stitching - Planned V1.2
+MIT License

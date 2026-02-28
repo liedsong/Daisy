@@ -35,5 +35,10 @@
     "target_gender_label": "Target's Gender",
     "gender_male": "Male",
     "gender_female": "Female",
-    "gender_unknown": "Unknown/N/A"
+    "gender_unknown": "Unknown/N/A",
+    "stitching_images": "Detected {count} images. Stitching...",
+    "stitching_success": "Successfully stitched {count} images!",
+    "correcting_ocr": "Correcting OCR errors with AI...",
+    "system_prompt_config": "System Prompt Config",
+    "edit_prompt": "Edit Prompt Template"
 }

@@ -35,5 +35,10 @@
     "target_gender_label": "对方性别",
     "gender_male": "男",
     "gender_female": "女",
-    "gender_unknown": "未知/不适用"
+    "gender_unknown": "未知/不适用",
+    "stitching_images": "检测到 {count} 张图片。正在拼接...",
+    "stitching_success": "成功拼接 {count} 张图片！",
+    "correcting_ocr": "正在使用 AI 修正 OCR 识别错误...",
+    "system_prompt_config": "系统提示词配置",
+    "edit_prompt": "编辑提示词模板"
 }

@@ -6,6 +6,7 @@ from core.chat_parser import ChatParser
 from core.llm_client import LLMClient
 from core.i18n import t
 from core.logger import get_logger
+from core.image_processor import ImageProcessor
 from dotenv import load_dotenv
 import os
 
@@ -122,47 +123,72 @@ def main():
     display_logs()
 
     # File uploader
-    uploaded_file = st.file_uploader(t("upload_label"), type=['png', 'jpg', 'jpeg'])
+    uploaded_files = st.file_uploader(t("upload_label"), type=['png', 'jpg', 'jpeg'], accept_multiple_files=True)
 
-    if uploaded_file is not None:
-        logger.info(f"Image uploaded: {uploaded_file.name}, size: {uploaded_file.size} bytes")
+    if uploaded_files:
         # Convert to numpy array for processing
-        file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
-        image = cv2.imdecode(file_bytes, 1)
-        
-        # Display image
-        col1, col2 = st.columns([1, 1])
-        with col1:
-            st.image(image, caption=t("uploaded_caption"), use_container_width=True)
+        raw_images = []
+        for uploaded_file in uploaded_files:
+            file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
+            raw_images.append(cv2.imdecode(file_bytes, 1))
+            logger.info(f"Image uploaded: {uploaded_file.name}, size: {uploaded_file.size} bytes")
+
+        # Process and Stitch
+        with st.spinner(t("analyzing_spinner")): # Reusing spinner text or creating new key
+            if len(raw_images) > 1:
+                status_placeholder = st.empty()
+                status_placeholder.info(t("stitching_images", count=len(raw_images)))
+                image = ImageProcessor.process(raw_images, denoise=True)
+                status_placeholder.success(t("stitching_success", count=len(raw_images)))
+            else:
+                image = raw_images[0]
+                # Optional: Denoise single image too
+                # image = ImageProcessor.denoise_image(image)
             
-        with col2:
-            st.subheader(t("analysis_result"))
-            
-            if st.button(t("analyze_btn")):
-                with st.spinner(t("analyzing_spinner")):
-                    try:
-                        # Initialize engines
-                        ocr_engine = get_ocr_engine()
-                        parser = ChatParser()
-                        
-                        # OCR
-                        ocr_results = ocr_engine.extract_text(image)
-                        
-                        # Parse
-                        height, width, _ = image.shape
-                        messages = parser.parse(ocr_results, width)
-                        
-                        if not messages:
-                            logger.warning("No messages detected in uploaded image")
-                            st.warning(t("no_messages_warning"))
-                        else:
-                            logger.info(f"Successfully extracted {len(messages)} messages")
-                            st.session_state['chat_history'] = messages
-                            st.success(t("detected_messages", count=len(messages)))
+            # Save the processed image to session state so we don't re-process on rerun
+            st.session_state['processed_image'] = image
+
+        # Display image (Use processed image)
+        if 'processed_image' in st.session_state:
+            col1, col2 = st.columns([1, 1])
+            with col1:
+                st.image(st.session_state['processed_image'], caption=t("uploaded_caption"), use_container_width=True)
+                
+            with col2:
+                st.subheader(t("analysis_result"))
+                
+                if st.button(t("analyze_btn")):
+                    with st.spinner(t("analyzing_spinner")):
+                        try:
+                            # Initialize engines
+                            ocr_engine = get_ocr_engine()
+                            parser = ChatParser()
                             
-                    except Exception as e:
-                        logger.error(f"Analysis failed: {e}", exc_info=True)
-                        st.error(t("error_analysis", error=str(e)))
+                            # OCR using the PROCESSED image
+                            ocr_results = ocr_engine.extract_text(st.session_state['processed_image'])
+                            
+                            # Parse
+                            height, width, _ = st.session_state['processed_image'].shape
+                            messages = parser.parse(ocr_results, width)
+                            
+                            # LLM-based OCR Correction (Optional but recommended)
+                            if messages and api_key:
+                                with st.status(t("correcting_ocr"), expanded=False) as status:
+                                    llm_client = LLMClient(api_key=api_key, model=model, base_url=base_url)
+                                    messages = llm_client.correct_ocr_errors(messages)
+                                    status.update(label="OCR Correction Complete!", state="complete", expanded=False)
+
+                            if not messages:
+                                    logger.warning("No messages detected in uploaded image")
+                                    st.warning(t("no_messages_warning"))
+                            else:
+                                logger.info(f"Successfully extracted {len(messages)} messages")
+                                st.session_state['chat_history'] = messages
+                                st.success(t("detected_messages", count=len(messages)))
+                            
+                        except Exception as e:
+                            logger.error(f"Analysis failed: {e}", exc_info=True)
+                            st.error(t("error_analysis", error=str(e)))
 
             # Display parsed chat with editing capabilities
             if 'chat_history' in st.session_state:

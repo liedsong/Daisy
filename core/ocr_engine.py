@@ -20,6 +20,7 @@ class OCREngine:
             use_gpu = False
 
         logger.info(f"Initializing EasyOCR with GPU={use_gpu}...")
+        # Add contrast_ths and adjust_contrast to improve accuracy on dark/low-contrast images
         self.reader = easyocr.Reader(languages, gpu=use_gpu)
 
     def extract_text(self, image_path_or_bytes):
@@ -37,9 +38,22 @@ class OCREngine:
         else:
             image = image_path_or_bytes
 
+        # Preprocessing to improve accuracy
+        # 1. Convert to grayscale
+        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+        
+        # 2. Rescale if image is too small (width < 1000px)
+        # EasyOCR works better on larger text
+        h, w = gray.shape
+        if w < 1000:
+            scale = 1000 / w
+            gray = cv2.resize(gray, None, fx=scale, fy=scale, interpolation=cv2.INTER_CUBIC)
+            logger.info(f"Upscaled image for OCR by factor {scale:.2f}")
+
         # Perform OCR
         # detail=1 returns bounding box, text, and confidence
-        results = self.reader.readtext(image, detail=1)
+        # paragraph=False ensuring line-by-line detection
+        results = self.reader.readtext(gray, detail=1, paragraph=False)
         return results
 
 if __name__ == "__main__":

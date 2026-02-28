@@ -21,6 +21,78 @@ class LLMClient:
         else:
             self.client = OpenAI(api_key=self.api_key, base_url=self.base_url)
 
+    def correct_ocr_errors(self, messages):
+        """
+        Use LLM to correct OCR errors in the chat history.
+        Args:
+            messages: List of dict [{'role': '...', 'text': '...'}]
+        Returns:
+            List of dict: Corrected messages
+        """
+        if not self.client:
+            logger.warning("LLM client not initialized, skipping OCR correction.")
+            return messages
+
+        # Prepare the input for LLM
+        # We'll send a JSON-like string to save tokens and structure
+        input_text = ""
+        for i, msg in enumerate(messages):
+            input_text += f"{i}. [{msg['role']}] {msg['text']}\n"
+
+        system_prompt = """
+        You are an OCR post-processing expert for chat logs. 
+        Your task is to fix typos, merge broken sentences, and correct role attribution errors in the provided chat history.
+        
+        Rules:
+        1. Context is King: Use context to fix homophones or nonsensical characters (e.g., "hv a nice dy" -> "have a nice day").
+        2. Format: Return ONLY the corrected list in valid JSON format.
+        3. STRICTLY PRESERVE TONE: Do NOT change slang, emojis, punctuation style, or informal grammar unless it is clearly an OCR error. We need the original tone for psychological analysis.
+        4. If a line looks like a timestamp (e.g., "12:00", "Yesterday"), REMOVE it.
+        5. Output format: [{"role": "me", "text": "corrected text"}, ...]
+        """
+
+        try:
+            # Use deepseek-chat (or light model) for this task to save cost
+            # If the initialized model is deepseek-reasoner, we might want to force deepseek-chat for this lightweight task
+            # But for simplicity, we use self.model. If user selected deepseek-reasoner, it might be overkill but fine.
+            # Ideally, we should allow specifying a "utility model".
+            
+            # Let's try to force a cheaper model if possible, or just use the current one.
+            # Since the user specifically asked for "deepseek-chat" to save tokens:
+            correction_model = "deepseek-chat" if "deepseek" in self.base_url else "gpt-3.5-turbo"
+            
+            response = self.client.chat.completions.create(
+                model=correction_model,
+                messages=[
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": f"Correct this OCR output:\n\n{input_text}"}
+                ],
+                temperature=0.1, # Low temperature for deterministic corrections
+                response_format={"type": "json_object"}
+            )
+            
+            import json
+            corrected_content = response.choices[0].message.content
+            corrected_data = json.loads(corrected_content)
+            
+            # Handle potential wrapper keys like {"messages": [...]}
+            if isinstance(corrected_data, dict):
+                # Look for a list value
+                for key, val in corrected_data.items():
+                    if isinstance(val, list):
+                        return val
+                # If no list found, maybe the dict itself is one message? Unlikely.
+                # Fallback
+                return messages
+            elif isinstance(corrected_data, list):
+                return corrected_data
+            
+            return messages
+
+        except Exception as e:
+            logger.error(f"OCR correction failed: {e}")
+            return messages
+
     @staticmethod
     def get_default_prompt():
         """

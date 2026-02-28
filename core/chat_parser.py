@@ -1,69 +1,62 @@
 import re
 
 class ChatParser:
-    def __init__(self):
-        # Regex for common timestamps (HH:MM, YYYY-MM-DD, Yesterday, etc.)
-        self.time_patterns = [
-            r'^\d{1,2}:\d{2}$',              # 12:30
-            r'^\d{1,2}:\d{2}\s?[AP]M$',      # 12:30 PM
-            r'^(Yesterday|Today|明天|昨天|今天)$',
-            r'^\d{4}[-/年]\d{1,2}[-/月]\d{1,2}日?$' # 2023-10-01
-        ]
-
-    def is_timestamp(self, text):
-        clean_text = text.strip()
-        for pattern in self.time_patterns:
-            if re.match(pattern, clean_text, re.IGNORECASE):
-                return True
-        return False
-
     def parse(self, ocr_results, image_width):
         """
-        Parse OCR results into structured chat messages.
+        Parses raw OCR results into structured chat messages based on X-coordinates.
+        Filters out timestamps and non-message elements.
+        
         Args:
-            ocr_results: List of [box, text, conf] from EasyOCR.
-            image_width: Width of the image.
+            ocr_results: List of [box, text, confidence] from EasyOCR.
+            image_width: Width of the image to determine left/right alignment.
+            
         Returns:
-            list of dict: Structured messages.
+            List of dict: [{'role': 'me'|'target', 'text': '...'}]
         """
         messages = []
+        center_x = image_width / 2
         
-        # Sort results by Y coordinate (top to bottom)
-        # box[0] is top-left corner [x, y]
-        sorted_results = sorted(ocr_results, key=lambda x: x[0][0][1])
-
-        for bbox, text, conf in sorted_results:
-            # Filter out low confidence
+        # Heuristic: 
+        # Left side (< center) -> Target
+        # Right side (> center) -> Me
+        # Center aligned -> System message / Time stamp (Ignore)
+        
+        for result in ocr_results:
+            box, text, conf = result
+            
+            # Filter low confidence
             if conf < 0.3:
                 continue
-
+                
+            # Calculate center of the text box
+            # box is [[x1,y1], [x2,y2], [x3,y3], [x4,y4]]
+            x_coords = [p[0] for p in box]
+            box_center_x = sum(x_coords) / 4
+            
             # Filter timestamps
-            if self.is_timestamp(text):
+            # Common patterns: "12:30", "Yesterday 14:00", "2023年10月1日", "上午 10:00"
+            # Regex for time/date patterns
+            time_pattern = r'^\d{1,2}:\d{2}$|^\d{4}年|^\d{1,2}月\d{1,2}日|^Yesterday|^Today|^上午|^下午|^中午|^凌晨|^晚上'
+            if re.search(time_pattern, text.strip()):
                 continue
-
-            # Calculate center X
-            x_coords = [p[0] for p in bbox]
-            center_x = sum(x_coords) / 4
             
-            # Determine role
-            # 60% threshold for "Me" (usually right aligned)
-            # 40% threshold for "Target" (usually left aligned)
-            # Center (40-60%) might be system message or timestamp (already filtered)
+            # Determine role based on position
+            # Add a buffer zone (e.g., 10% of width) for center alignment check
+            buffer = image_width * 0.1
             
-            if center_x > image_width * 0.6:
-                role = 'me'
-            elif center_x < image_width * 0.4:
+            if abs(box_center_x - center_x) < buffer:
+                # Likely a center-aligned system message or timestamp -> Ignore
+                continue
+            elif box_center_x < center_x:
                 role = 'target'
             else:
-                # Ambiguous - treat as system or ignore? 
-                # For now, if it's not a timestamp, maybe it's a short message.
-                # Let's default to target if closer to left, me if closer to right.
-                role = 'me' if center_x > image_width * 0.5 else 'target'
-
+                role = 'me'
+                
+            # Merge with previous message if role is same and vertical distance is small?
+            # For simplicity, we just append. Advanced logic can merge bubbles.
             messages.append({
                 'role': role,
-                'text': text,
-                'confidence': conf
+                'text': text
             })
             
         return messages

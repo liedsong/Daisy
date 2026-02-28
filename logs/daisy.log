@@ -11,3 +11,176 @@
 2026-02-28 14:48:15,216 - app - INFO - Application started
 2026-02-28 14:48:15,222 - app - INFO - Image uploaded: 373de2b6-4ec8-49c8-86de-7757e20aee00.png, size: 77480 bytes
 2026-02-28 14:48:16,653 - core.llm_client - INFO - Detected conversation language: en. Forced output language: English
+2026-02-28 14:55:23,797 - app - INFO - Application started
+2026-02-28 14:55:23,804 - app - INFO - Image uploaded: 373de2b6-4ec8-49c8-86de-7757e20aee00.png, size: 77480 bytes
+2026-02-28 14:55:33,209 - app - INFO - Application started
+2026-02-28 14:55:33,213 - app - INFO - Image uploaded: 373de2b6-4ec8-49c8-86de-7757e20aee00.png, size: 77480 bytes
+2026-02-28 14:55:40,512 - app - INFO - Application started
+2026-02-28 14:55:40,514 - app - INFO - Language changed from en to zh
+2026-02-28 14:55:40,719 - app - INFO - Application started
+2026-02-28 15:03:05,425 - app - INFO - Application started
+2026-02-28 15:03:12,311 - app - INFO - Application started
+2026-02-28 15:03:12,313 - app - INFO - Language changed from en to zh
+2026-02-28 15:03:12,548 - app - INFO - Application started
+2026-02-28 15:03:15,686 - app - INFO - Application started
+2026-02-28 15:03:23,177 - app - INFO - Application started
+2026-02-28 15:03:23,190 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:03:23,195 - app - INFO - Image uploaded: e45081df-a446-492e-bad2-812d961c227e.png, size: 91716 bytes
+2026-02-28 15:03:23,197 - core.image_processor - INFO - Denoising image (strength=10)...
+2026-02-28 15:03:24,415 - core.image_processor - INFO - Denoising image (strength=10)...
+2026-02-28 15:03:25,575 - core.image_processor - WARNING - Stitching image 1: No overlap found, appending directly.
+2026-02-28 15:03:32,093 - app - INFO - Application started
+2026-02-28 15:03:32,105 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:03:32,110 - app - INFO - Image uploaded: e45081df-a446-492e-bad2-812d961c227e.png, size: 91716 bytes
+2026-02-28 15:03:32,112 - core.image_processor - INFO - Denoising image (strength=10)...
+2026-02-28 15:03:33,336 - core.image_processor - INFO - Denoising image (strength=10)...
+2026-02-28 15:03:34,408 - core.image_processor - WARNING - Stitching image 1: No overlap found, appending directly.
+2026-02-28 15:03:36,792 - app - INFO - Successfully extracted 6 messages
+2026-02-28 15:03:53,166 - app - INFO - Application started
+2026-02-28 15:03:53,177 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:03:53,185 - app - INFO - Image uploaded: e45081df-a446-492e-bad2-812d961c227e.png, size: 91716 bytes
+2026-02-28 15:03:53,186 - core.image_processor - INFO - Denoising image (strength=10)...
+2026-02-28 15:03:54,419 - core.image_processor - INFO - Denoising image (strength=10)...
+2026-02-28 15:03:55,524 - core.image_processor - WARNING - Stitching image 1: No overlap found, appending directly.
+2026-02-28 15:03:55,775 - app - INFO - Application started
+2026-02-28 15:03:55,794 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:03:55,801 - app - INFO - Image uploaded: e45081df-a446-492e-bad2-812d961c227e.png, size: 91716 bytes
+2026-02-28 15:03:55,803 - core.image_processor - INFO - Denoising image (strength=10)...
+2026-02-28 15:03:56,968 - core.image_processor - INFO - Denoising image (strength=10)...
+2026-02-28 15:03:58,211 - core.image_processor - WARNING - Stitching image 1: No overlap found, appending directly.
+2026-02-28 15:04:12,225 - app - INFO - Application started
+2026-02-28 15:04:12,237 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:04:12,242 - app - INFO - Image uploaded: e45081df-a446-492e-bad2-812d961c227e.png, size: 91716 bytes
+2026-02-28 15:04:12,244 - core.image_processor - INFO - Denoising image (strength=10)...
+2026-02-28 15:04:13,355 - core.image_processor - INFO - Denoising image (strength=10)...
+2026-02-28 15:04:14,505 - core.image_processor - WARNING - Stitching image 1: No overlap found, appending directly.
+2026-02-28 15:04:14,820 - app - INFO - Application started
+2026-02-28 15:04:14,835 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:04:14,841 - app - INFO - Image uploaded: e45081df-a446-492e-bad2-812d961c227e.png, size: 91716 bytes
+2026-02-28 15:04:14,842 - core.image_processor - INFO - Denoising image (strength=10)...
+2026-02-28 15:04:16,028 - core.image_processor - INFO - Denoising image (strength=10)...
+2026-02-28 15:04:17,190 - core.image_processor - WARNING - Stitching image 1: No overlap found, appending directly.
+2026-02-28 15:04:21,429 - app - INFO - Application started
+2026-02-28 15:04:21,445 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:04:21,451 - app - INFO - Image uploaded: e45081df-a446-492e-bad2-812d961c227e.png, size: 91716 bytes
+2026-02-28 15:04:21,452 - core.image_processor - INFO - Denoising image (strength=10)...
+2026-02-28 15:04:22,631 - core.image_processor - INFO - Denoising image (strength=10)...
+2026-02-28 15:04:23,835 - core.image_processor - WARNING - Stitching image 1: No overlap found, appending directly.
+2026-02-28 15:04:30,683 - app - INFO - Application started
+2026-02-28 15:04:30,698 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:04:30,704 - app - INFO - Image uploaded: e45081df-a446-492e-bad2-812d961c227e.png, size: 91716 bytes
+2026-02-28 15:04:30,705 - core.image_processor - INFO - Denoising image (strength=10)...
+2026-02-28 15:04:31,857 - core.image_processor - INFO - Denoising image (strength=10)...
+2026-02-28 15:04:33,032 - core.image_processor - WARNING - Stitching image 1: No overlap found, appending directly.
+2026-02-28 15:04:34,549 - core.llm_client - INFO - Detected conversation language: no. Forced output language: Simplified Chinese
+2026-02-28 15:13:18,771 - app - INFO - Application started
+2026-02-28 15:13:29,775 - app - INFO - Application started
+2026-02-28 15:13:29,789 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:13:29,795 - app - INFO - Image uploaded: e45081df-a446-492e-bad2-812d961c227e.png, size: 91716 bytes
+2026-02-28 15:13:29,796 - core.image_processor - INFO - Denoising image (strength=10)...
+2026-02-28 15:13:31,057 - core.image_processor - INFO - Denoising image (strength=10)...
+2026-02-28 15:13:32,166 - core.image_processor - WARNING - Stitching image 1: No overlap found, appending directly.
+2026-02-28 15:13:40,382 - app - INFO - Application started
+2026-02-28 15:13:40,397 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:13:40,402 - app - INFO - Image uploaded: e45081df-a446-492e-bad2-812d961c227e.png, size: 91716 bytes
+2026-02-28 15:13:40,403 - core.image_processor - INFO - Denoising image (strength=10)...
+2026-02-28 15:13:41,680 - core.image_processor - INFO - Denoising image (strength=10)...
+2026-02-28 15:13:42,565 - core.image_processor - WARNING - Stitching image 1: No overlap found, appending directly.
+2026-02-28 15:13:42,577 - core.ocr_engine - INFO - Initializing EasyOCR with GPU=False...
+2026-02-28 15:13:46,608 - app - INFO - Successfully extracted 6 messages
+2026-02-28 15:13:58,128 - app - INFO - Application started
+2026-02-28 15:13:58,141 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:13:58,146 - app - INFO - Image uploaded: e45081df-a446-492e-bad2-812d961c227e.png, size: 91716 bytes
+2026-02-28 15:13:58,148 - core.image_processor - INFO - Denoising image (strength=10)...
+2026-02-28 15:13:59,278 - core.image_processor - INFO - Denoising image (strength=10)...
+2026-02-28 15:14:00,399 - core.image_processor - WARNING - Stitching image 1: No overlap found, appending directly.
+2026-02-28 15:14:00,609 - app - INFO - Application started
+2026-02-28 15:14:00,626 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:14:00,633 - app - INFO - Image uploaded: e45081df-a446-492e-bad2-812d961c227e.png, size: 91716 bytes
+2026-02-28 15:14:00,634 - core.image_processor - INFO - Denoising image (strength=10)...
+2026-02-28 15:14:01,807 - core.image_processor - INFO - Denoising image (strength=10)...
+2026-02-28 15:14:02,909 - core.image_processor - WARNING - Stitching image 1: No overlap found, appending directly.
+2026-02-28 15:17:54,369 - app - INFO - Application started
+2026-02-28 15:18:00,412 - app - INFO - Application started
+2026-02-28 15:18:00,414 - app - INFO - Language changed from en to zh
+2026-02-28 15:18:00,595 - app - INFO - Application started
+2026-02-28 15:18:04,095 - app - INFO - Application started
+2026-02-28 15:18:08,747 - app - INFO - Application started
+2026-02-28 15:18:14,553 - app - INFO - Application started
+2026-02-28 15:18:22,001 - app - INFO - Application started
+2026-02-28 15:18:28,625 - app - INFO - Application started
+2026-02-28 15:18:28,635 - app - INFO - Image uploaded: 9df7be67-b8b0-46c9-a5dd-bdde5dca6714.png, size: 75315 bytes
+2026-02-28 15:18:30,638 - app - INFO - Application started
+2026-02-28 15:18:30,648 - app - INFO - Image uploaded: 9df7be67-b8b0-46c9-a5dd-bdde5dca6714.png, size: 75315 bytes
+2026-02-28 15:18:31,974 - app - INFO - Successfully extracted 3 messages
+2026-02-28 15:20:16,138 - app - INFO - Application started
+2026-02-28 15:20:20,460 - app - INFO - Application started
+2026-02-28 15:20:20,471 - app - INFO - Image uploaded: 9df7be67-b8b0-46c9-a5dd-bdde5dca6714.png, size: 75315 bytes
+2026-02-28 15:20:21,794 - app - INFO - Application started
+2026-02-28 15:20:21,810 - app - INFO - Image uploaded: 9df7be67-b8b0-46c9-a5dd-bdde5dca6714.png, size: 75315 bytes
+2026-02-28 15:20:23,122 - app - INFO - Successfully extracted 3 messages
+2026-02-28 15:20:33,974 - app - INFO - Application started
+2026-02-28 15:20:33,984 - app - INFO - Image uploaded: 9df7be67-b8b0-46c9-a5dd-bdde5dca6714.png, size: 75315 bytes
+2026-02-28 15:20:33,991 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:20:33,993 - core.image_processor - INFO - Denoising image (strength=10)...
+2026-02-28 15:20:35,255 - core.image_processor - INFO - Denoising image (strength=10)...
+2026-02-28 15:20:36,507 - core.image_processor - WARNING - Stitching image 1: No overlap found, appending directly.
+2026-02-28 15:20:39,718 - app - INFO - Application started
+2026-02-28 15:20:39,728 - app - INFO - Image uploaded: 9df7be67-b8b0-46c9-a5dd-bdde5dca6714.png, size: 75315 bytes
+2026-02-28 15:20:39,737 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:20:39,739 - core.image_processor - INFO - Denoising image (strength=10)...
+2026-02-28 15:20:40,742 - core.image_processor - INFO - Denoising image (strength=10)...
+2026-02-28 15:20:41,840 - core.image_processor - WARNING - Stitching image 1: No overlap found, appending directly.
+2026-02-28 15:20:44,562 - app - INFO - Successfully extracted 7 messages
+2026-02-28 15:23:43,617 - app - INFO - Application started
+2026-02-28 15:23:43,628 - app - INFO - Image uploaded: 9df7be67-b8b0-46c9-a5dd-bdde5dca6714.png, size: 75315 bytes
+2026-02-28 15:23:43,636 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:23:43,638 - core.image_processor - INFO - Denoising image (strength=10)...
+2026-02-28 15:23:44,831 - core.image_processor - INFO - Denoising image (strength=10)...
+2026-02-28 15:23:46,003 - core.image_processor - WARNING - Stitching image 1: No overlap found, appending directly.
+2026-02-28 15:23:48,744 - app - INFO - Successfully extracted 6 messages
+2026-02-28 15:23:54,811 - app - INFO - Application started
+2026-02-28 15:23:54,821 - app - INFO - Image uploaded: 9df7be67-b8b0-46c9-a5dd-bdde5dca6714.png, size: 75315 bytes
+2026-02-28 15:23:56,925 - app - INFO - Application started
+2026-02-28 15:23:56,937 - app - INFO - Image uploaded: 9df7be67-b8b0-46c9-a5dd-bdde5dca6714.png, size: 75315 bytes
+2026-02-28 15:23:58,237 - app - INFO - Successfully extracted 2 messages
+2026-02-28 15:24:05,139 - app - INFO - Application started
+2026-02-28 15:24:08,166 - app - INFO - Application started
+2026-02-28 15:24:08,180 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:24:09,687 - app - INFO - Application started
+2026-02-28 15:24:09,706 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:24:11,339 - app - INFO - Successfully extracted 4 messages
+2026-02-28 15:24:15,276 - app - INFO - Application started
+2026-02-28 15:26:06,528 - app - INFO - Application started
+2026-02-28 15:26:06,538 - app - INFO - Image uploaded: 9df7be67-b8b0-46c9-a5dd-bdde5dca6714.png, size: 75315 bytes
+2026-02-28 15:26:06,546 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:26:06,548 - core.image_processor - INFO - Denoising image (strength=10)...
+2026-02-28 15:26:07,782 - core.image_processor - INFO - Denoising image (strength=10)...
+2026-02-28 15:26:09,025 - core.image_processor - WARNING - Stitching image 1: No overlap found, appending directly.
+2026-02-28 15:26:12,567 - app - INFO - Application started
+2026-02-28 15:26:12,578 - app - INFO - Image uploaded: 9df7be67-b8b0-46c9-a5dd-bdde5dca6714.png, size: 75315 bytes
+2026-02-28 15:26:12,587 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:26:12,588 - core.image_processor - INFO - Denoising image (strength=10)...
+2026-02-28 15:26:13,613 - core.image_processor - INFO - Denoising image (strength=10)...
+2026-02-28 15:26:14,642 - core.image_processor - WARNING - Stitching image 1: No overlap found, appending directly.
+2026-02-28 15:26:24,831 - app - INFO - Successfully extracted 6 messages
+2026-02-28 15:26:55,609 - app - INFO - Application started
+2026-02-28 15:26:55,619 - app - INFO - Image uploaded: 9df7be67-b8b0-46c9-a5dd-bdde5dca6714.png, size: 75315 bytes
+2026-02-28 15:26:55,628 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:26:55,631 - core.image_processor - INFO - Denoising image (strength=10)...
+2026-02-28 15:26:56,996 - core.image_processor - INFO - Denoising image (strength=10)...
+2026-02-28 15:26:58,233 - core.image_processor - WARNING - Stitching image 1: No overlap found, appending directly.
+2026-02-28 15:27:00,735 - core.llm_client - INFO - Detected conversation language: en. Forced output language: English
+2026-02-28 15:29:45,602 - app - INFO - Application started
+2026-02-28 15:29:45,612 - app - INFO - Image uploaded: 9df7be67-b8b0-46c9-a5dd-bdde5dca6714.png, size: 75315 bytes
+2026-02-28 15:29:45,621 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:29:45,623 - core.image_processor - INFO - Denoising image (strength=10)...
+2026-02-28 15:29:46,886 - core.image_processor - INFO - Denoising image (strength=10)...
+2026-02-28 15:29:48,071 - core.image_processor - WARNING - Stitching image 1: No overlap found, appending directly.
+2026-02-28 15:29:53,763 - app - INFO - Application started
+2026-02-28 15:29:53,774 - app - INFO - Image uploaded: 9df7be67-b8b0-46c9-a5dd-bdde5dca6714.png, size: 75315 bytes
+2026-02-28 15:29:53,782 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:29:53,784 - core.image_processor - INFO - Denoising image (strength=10)...
+2026-02-28 15:29:54,788 - core.image_processor - INFO - Denoising image (strength=10)...
+2026-02-28 15:29:55,991 - core.image_processor - WARNING - Stitching image 1: No overlap found, appending directly.
+2026-02-28 15:29:57,408 - core.llm_client - INFO - Detected conversation language: en. Forced output language: English
