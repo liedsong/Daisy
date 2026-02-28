@@ -1,0 +1,7 @@
+easyocr
+streamlit
+opencv-python-headless
+numpy
+pandas
+openai
+python-dotenv
