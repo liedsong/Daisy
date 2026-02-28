@@ -1,6 +1,9 @@
 import easyocr
 import cv2
 import numpy as np
+from core.logger import get_logger
+
+logger = get_logger(__name__)
 
 class OCREngine:
     def __init__(self, languages=['ch_sim', 'en'], use_gpu=False):
@@ -13,10 +16,10 @@ class OCREngine:
         # Force CPU if CUDA is not available
         import torch
         if use_gpu and not torch.cuda.is_available():
-            print("Warning: CUDA is not available. Falling back to CPU.")
+            logger.warning("CUDA is not available. Falling back to CPU.")
             use_gpu = False
 
-        print(f"Initializing EasyOCR with GPU={use_gpu}...")
+        logger.info(f"Initializing EasyOCR with GPU={use_gpu}...")
         self.reader = easyocr.Reader(languages, gpu=use_gpu)
 
     def extract_text(self, image_path_or_bytes):

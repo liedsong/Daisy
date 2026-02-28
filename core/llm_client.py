@@ -2,6 +2,9 @@ import os
 from openai import OpenAI
 from dotenv import load_dotenv
 from core.utils import detect_language, get_language_name
+from core.logger import get_logger
+
+logger = get_logger(__name__)
 
 # Load environment variables from .env file
 load_dotenv()
@@ -18,11 +21,13 @@ class LLMClient:
         else:
             self.client = OpenAI(api_key=self.api_key, base_url=self.base_url)
 
-    def generate_reply(self, chat_history):
+    def generate_reply(self, chat_history, custom_system_prompt=None, ui_language="en"):
         """
         Generate reply based on chat history.
         Args:
             chat_history: List of dict [{'role': 'me'/'target', 'text': '...'}]
+            custom_system_prompt: Optional custom system prompt
+            ui_language: The UI language code ('en' or 'zh') to force response language
         Returns:
             dict: {
                 "content": str,          # The actual reply options
@@ -33,6 +38,7 @@ class LLMClient:
             }
         """
         if not self.client:
+            logger.error("OpenAI API Key is missing")
             return {"error": "Error: OpenAI API Key is missing. Please configure it in the .env file."}
 
         # Format history for prompt
@@ -46,11 +52,18 @@ class LLMClient:
             history_text += f"{role_label}: {msg['text']}\n"
             full_text_for_detection += f"{msg['text']} "
 
-        # Detect language of the conversation
-        detected_lang_code = detect_language(full_text_for_detection)
-        target_language_name = get_language_name(detected_lang_code)
         
-        print(f"Detected conversation language: {detected_lang_code} -> {target_language_name}")
+        # Determine target language based on UI setting
+        # If UI language is Chinese ('zh'), force Simplified Chinese
+        # If UI language is English ('en'), force English
+        if ui_language == 'zh':
+            target_language_name = "Simplified Chinese"
+        else:
+            target_language_name = "English"
+        
+        # We still detect language for logging/debug purposes
+        detected_lang_code = detect_language(full_text_for_detection)
+        logger.info(f"Detected conversation language: {detected_lang_code}. Forced output language: {target_language_name}")
 
         system_prompt = f"""
         # 角色 

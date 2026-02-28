@@ -22,25 +22,21 @@ st.markdown("""
 <style>
 .chat-bubble {
     padding: 10px 15px;
-    border-radius: 15px;
-    margin: 5px 0;
+    border-radius: 20px;
+    margin-bottom: 10px;
     max-width: 70%;
     word-wrap: break-word;
-}
-.me-bubble {
-    background-color: #DCF8C6;
-    color: black;
-    margin-left: auto;
-    text-align: right;
-    border-bottom-right-radius: 0;
+    font-size: 16px;
 }
 .target-bubble {
-    background-color: #FFFFFF;
-    color: black;
-    margin-right: auto;
-    text-align: left;
-    border-bottom-left-radius: 0;
-    border: 1px solid #E0E0E0;
+    background-color: #f0f0f0;
+    color: #000;
+    border-bottom-left-radius: 5px;
+}
+.me-bubble {
+    background-color: #0084ff;
+    color: #fff;
+    border-bottom-right-radius: 5px;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -49,7 +45,21 @@ st.markdown("""
 def get_ocr_engine():
     return OCREngine()
 
+def display_logs():
+    """Display logs in the sidebar for debugging."""
+    if st.sidebar.checkbox("Show Logs (Debug)", value=False):
+        st.sidebar.markdown("### System Logs")
+        log_file_path = os.path.join("logs", "daisy.log")
+        if os.path.exists(log_file_path):
+            with open(log_file_path, "r", encoding="utf-8") as f:
+                logs = f.readlines()
+                # Show last 50 lines
+                st.sidebar.code("".join(logs[-50:]), language="text")
+        else:
+            st.sidebar.warning("No logs found.")
+
 def main():
+    logger.info("Application started")
     st.title(t("main_title"))
     st.markdown(t("subtitle"))
 
@@ -72,6 +82,7 @@ def main():
         # Update session state if changed
         new_lang_code = lang_map[selected_lang]
         if new_lang_code != current_lang_code:
+            logger.info(f"Language changed from {current_lang_code} to {new_lang_code}")
             st.session_state['language'] = new_lang_code
             st.rerun()
 
@@ -97,10 +108,22 @@ def main():
             
         st.info(f"{t('ensure_api_key')}")
 
+        # System Prompt Config
+        with st.expander(t("system_prompt_config")):
+            st.session_state['system_prompt'] = st.text_area(
+                t("edit_prompt"), 
+                value=st.session_state.get('system_prompt', LLMClient.get_default_prompt()),
+                height=300
+            )
+
+    # Display Logs Component
+    display_logs()
+
     # File uploader
     uploaded_file = st.file_uploader(t("upload_label"), type=['png', 'jpg', 'jpeg'])
 
     if uploaded_file is not None:
+        logger.info(f"Image uploaded: {uploaded_file.name}, size: {uploaded_file.size} bytes")
         # Convert to numpy array for processing
         file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
         image = cv2.imdecode(file_bytes, 1)
@@ -128,12 +151,15 @@ def main():
                         messages = parser.parse(ocr_results, width)
                         
                         if not messages:
+                            logger.warning("No messages detected in uploaded image")
                             st.warning(t("no_messages_warning"))
                         else:
+                            logger.info(f"Successfully extracted {len(messages)} messages")
                             st.session_state['chat_history'] = messages
                             st.success(t("detected_messages", count=len(messages)))
                             
                     except Exception as e:
+                        logger.error(f"Analysis failed: {e}", exc_info=True)
                         st.error(t("error_analysis", error=str(e)))
 
             # Display parsed chat with editing capabilities
@@ -218,8 +244,12 @@ def main():
                         chat_history_with_context = st.session_state['chat_history'].copy()
                         chat_history_with_context.append({'role': 'system', 'text': context_note})
                         
+                        # Get current UI language
+                        ui_lang = st.session_state.get('language', 'en')
+                        
                         with st.spinner(t("consulting_coach")):
-                            result = llm_client.generate_reply(chat_history_with_context)
+                            # Pass ui_language to generate_reply
+                            result = llm_client.generate_reply(chat_history_with_context, ui_language=ui_lang)
                             
                             # Handle error
                             if result.get("error"):

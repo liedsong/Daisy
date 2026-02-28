@@ -1,4 +1,7 @@
 from langdetect import detect
+from core.logger import get_logger
+
+logger = get_logger(__name__)
 
 def detect_language(text: str) -> str:
     """
@@ -15,7 +18,7 @@ def detect_language(text: str) -> str:
         lang = detect(text)
         return lang
     except Exception as e:
-        print(f"Language detection failed: {e}")
+        logger.warning(f"Language detection failed: {e}")
         return "en"
 
 def get_language_name(lang_code: str) -> str:
