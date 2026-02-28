@@ -184,3 +184,166 @@
 2026-02-28 15:29:54,788 - core.image_processor - INFO - Denoising image (strength=10)...
 2026-02-28 15:29:55,991 - core.image_processor - WARNING - Stitching image 1: No overlap found, appending directly.
 2026-02-28 15:29:57,408 - core.llm_client - INFO - Detected conversation language: en. Forced output language: English
+2026-02-28 15:31:26,895 - app - INFO - Application started
+2026-02-28 15:31:26,906 - app - INFO - Image uploaded: 9df7be67-b8b0-46c9-a5dd-bdde5dca6714.png, size: 75315 bytes
+2026-02-28 15:31:26,914 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:31:26,916 - core.image_processor - INFO - Denoising image (strength=10)...
+2026-02-28 15:31:28,260 - core.image_processor - INFO - Denoising image (strength=10)...
+2026-02-28 15:31:29,549 - core.image_processor - WARNING - Stitching image 1: No overlap found, appending directly.
+2026-02-28 15:31:43,643 - app - INFO - Application started
+2026-02-28 15:31:43,656 - app - INFO - Image uploaded: 9df7be67-b8b0-46c9-a5dd-bdde5dca6714.png, size: 75315 bytes
+2026-02-28 15:31:43,663 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:31:43,665 - core.image_processor - INFO - Denoising image (strength=10)...
+2026-02-28 15:31:44,997 - core.image_processor - INFO - Denoising image (strength=10)...
+2026-02-28 15:31:46,155 - core.image_processor - WARNING - Stitching image 1: No overlap found, appending directly.
+2026-02-28 15:31:47,627 - core.llm_client - INFO - Detected conversation language: en. Forced output language: English
+2026-02-28 15:35:00,650 - app - INFO - Application started
+2026-02-28 15:35:14,535 - app - INFO - Application started
+2026-02-28 15:35:14,548 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:35:16,996 - app - INFO - Application started
+2026-02-28 15:35:17,010 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:35:24,437 - app - INFO - Successfully extracted 4 messages
+2026-02-28 15:35:41,933 - app - INFO - Application started
+2026-02-28 15:35:41,944 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:35:47,808 - app - INFO - Application started
+2026-02-28 15:35:47,823 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:35:48,053 - app - INFO - Application started
+2026-02-28 15:35:48,066 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:35:54,489 - app - INFO - Application started
+2026-02-28 15:35:54,501 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:35:54,712 - app - INFO - Application started
+2026-02-28 15:35:54,724 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:35:57,807 - app - INFO - Application started
+2026-02-28 15:35:57,819 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:36:00,026 - app - INFO - Application started
+2026-02-28 15:36:00,040 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:36:01,014 - app - INFO - Application started
+2026-02-28 15:36:01,030 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:36:02,420 - core.llm_client - INFO - Detected conversation language: en. Forced output language: Simplified Chinese
+2026-02-28 15:38:52,737 - app - INFO - Application started
+2026-02-28 15:39:02,852 - app - INFO - Application started
+2026-02-28 15:39:02,864 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:39:04,404 - app - INFO - Application started
+2026-02-28 15:39:04,417 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:39:12,469 - app - INFO - Successfully extracted 4 messages
+2026-02-28 15:39:26,198 - app - INFO - Application started
+2026-02-28 15:39:26,214 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:39:27,477 - app - INFO - Application started
+2026-02-28 15:39:27,490 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:39:30,803 - app - INFO - Application started
+2026-02-28 15:39:30,815 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:39:31,052 - app - INFO - Application started
+2026-02-28 15:39:31,064 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:39:33,244 - app - INFO - Application started
+2026-02-28 15:39:33,258 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:39:33,467 - app - INFO - Application started
+2026-02-28 15:39:33,479 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:39:34,353 - app - INFO - Application started
+2026-02-28 15:39:34,368 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:39:34,611 - app - INFO - Application started
+2026-02-28 15:39:34,626 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:39:39,561 - app - INFO - Application started
+2026-02-28 15:39:39,579 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:39:39,805 - app - INFO - Application started
+2026-02-28 15:39:39,820 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:41:28,502 - app - INFO - Application started
+2026-02-28 15:41:39,881 - app - INFO - Application started
+2026-02-28 15:41:39,892 - app - INFO - Image uploaded: 9df7be67-b8b0-46c9-a5dd-bdde5dca6714.png, size: 75315 bytes
+2026-02-28 15:41:41,457 - app - INFO - Application started
+2026-02-28 15:41:41,475 - app - INFO - Image uploaded: 9df7be67-b8b0-46c9-a5dd-bdde5dca6714.png, size: 75315 bytes
+2026-02-28 15:41:48,258 - app - INFO - Successfully extracted 2 messages
+2026-02-28 15:41:54,744 - app - INFO - Application started
+2026-02-28 15:41:54,755 - app - INFO - Image uploaded: 9df7be67-b8b0-46c9-a5dd-bdde5dca6714.png, size: 75315 bytes
+2026-02-28 15:41:54,970 - app - INFO - Application started
+2026-02-28 15:41:54,980 - app - INFO - Image uploaded: 9df7be67-b8b0-46c9-a5dd-bdde5dca6714.png, size: 75315 bytes
+2026-02-28 15:42:00,121 - app - INFO - Application started
+2026-02-28 15:42:03,320 - app - INFO - Application started
+2026-02-28 15:42:03,331 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:42:06,371 - app - INFO - Application started
+2026-02-28 15:42:06,387 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:42:15,099 - app - INFO - Successfully extracted 4 messages
+2026-02-28 15:42:24,452 - app - INFO - Application started
+2026-02-28 15:42:24,471 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:42:24,693 - app - INFO - Application started
+2026-02-28 15:42:24,705 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:42:26,051 - app - INFO - Application started
+2026-02-28 15:42:26,065 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:42:26,292 - app - INFO - Application started
+2026-02-28 15:42:26,306 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:42:27,521 - app - INFO - Application started
+2026-02-28 15:42:27,534 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:42:28,362 - app - INFO - Application started
+2026-02-28 15:42:28,389 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:42:37,342 - app - INFO - Successfully extracted 4 messages
+2026-02-28 15:44:39,947 - app - INFO - Application started
+2026-02-28 15:44:48,544 - app - INFO - Application started
+2026-02-28 15:44:48,549 - app - INFO - New upload detected. Clearing previous chat history.
+2026-02-28 15:44:48,556 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:44:49,927 - app - INFO - Application started
+2026-02-28 15:44:49,947 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:44:59,784 - app - INFO - Successfully extracted 4 messages
+2026-02-28 15:45:06,159 - app - INFO - Application started
+2026-02-28 15:45:06,172 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:45:06,392 - app - INFO - Application started
+2026-02-28 15:45:06,406 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:45:08,066 - app - INFO - Application started
+2026-02-28 15:45:08,082 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:45:08,311 - app - INFO - Application started
+2026-02-28 15:45:08,322 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:45:09,237 - app - INFO - Application started
+2026-02-28 15:45:09,251 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:45:09,482 - app - INFO - Application started
+2026-02-28 15:45:09,495 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:45:12,032 - app - INFO - Application started
+2026-02-28 15:45:12,043 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:45:12,282 - app - INFO - Application started
+2026-02-28 15:45:12,294 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:45:13,908 - app - INFO - Application started
+2026-02-28 15:45:13,927 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:45:14,164 - app - INFO - Application started
+2026-02-28 15:45:14,177 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:45:15,382 - app - INFO - Application started
+2026-02-28 15:45:15,394 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:45:15,608 - app - INFO - Application started
+2026-02-28 15:45:15,620 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:45:18,447 - app - INFO - Application started
+2026-02-28 15:45:20,930 - app - INFO - Application started
+2026-02-28 15:45:20,934 - app - INFO - New upload detected. Clearing previous chat history.
+2026-02-28 15:45:20,940 - app - INFO - Image uploaded: 9df7be67-b8b0-46c9-a5dd-bdde5dca6714.png, size: 75315 bytes
+2026-02-28 15:45:22,445 - app - INFO - Application started
+2026-02-28 15:45:22,458 - app - INFO - Image uploaded: 9df7be67-b8b0-46c9-a5dd-bdde5dca6714.png, size: 75315 bytes
+2026-02-28 15:45:28,792 - app - INFO - Successfully extracted 2 messages
+2026-02-28 15:47:22,935 - app - INFO - Application started
+2026-02-28 15:47:32,177 - app - INFO - Application started
+2026-02-28 15:47:32,181 - app - INFO - New upload detected. Clearing previous chat history.
+2026-02-28 15:47:32,189 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:47:33,263 - app - INFO - Application started
+2026-02-28 15:47:33,280 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:47:41,111 - app - INFO - Successfully extracted 4 messages
+2026-02-28 15:47:50,541 - app - INFO - Application started
+2026-02-28 15:47:50,553 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:47:52,010 - app - INFO - Application started
+2026-02-28 15:47:52,024 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:47:52,830 - app - INFO - Application started
+2026-02-28 15:47:52,842 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:47:53,590 - app - INFO - Application started
+2026-02-28 15:47:53,604 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:47:55,116 - app - INFO - Application started
+2026-02-28 15:47:55,129 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:47:57,090 - app - INFO - Application started
+2026-02-28 15:47:57,104 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:47:58,065 - app - INFO - Application started
+2026-02-28 15:47:58,078 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:47:59,239 - app - INFO - Application started
+2026-02-28 15:47:59,251 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:48:00,065 - app - INFO - Application started
+2026-02-28 15:48:00,078 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:48:01,473 - app - INFO - Application started
+2026-02-28 15:48:01,488 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:53:06,167 - app - INFO - Application started
+2026-02-28 15:53:17,501 - app - INFO - Application started
+2026-02-28 15:53:17,508 - app - INFO - New upload detected. Clearing previous chat history.
+2026-02-28 15:53:17,516 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:53:19,144 - app - INFO - Application started
+2026-02-28 15:53:19,160 - app - INFO - Image uploaded: c03d04d4-f0d1-410d-8cb5-73c9c78b3e39.png, size: 191551 bytes
+2026-02-28 15:53:27,196 - app - INFO - Successfully extracted 4 messages

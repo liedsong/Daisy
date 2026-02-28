@@ -17,7 +17,7 @@ st.set_page_config(page_title="Daisy - Your Dating Wingman", page_icon="💘", l
 
 # Initialize language in session state
 if 'language' not in st.session_state:
-    st.session_state['language'] = 'en'
+    st.session_state['language'] = 'zh'
 
 # Custom CSS for chat bubbles
 st.markdown("""
@@ -93,7 +93,9 @@ def main():
         
         # Model Selection
         model_options = ["gpt-3.5-turbo", "gpt-4", "gpt-4-turbo", "deepseek-chat", "deepseek-reasoner"]
-        model = st.selectbox(t("model_label"), model_options, index=0)
+        # Set default index to 4 (deepseek-reasoner) if available, otherwise 0
+        default_model_index = 4 if "deepseek-reasoner" in model_options else 0
+        model = st.selectbox(t("model_label"), model_options, index=default_model_index)
         
         # Base URL Logic
         default_base_url = "https://api.openai.com/v1"
@@ -126,6 +128,21 @@ def main():
     uploaded_files = st.file_uploader(t("upload_label"), type=['png', 'jpg', 'jpeg'], accept_multiple_files=True)
 
     if uploaded_files:
+        # Check if new files are uploaded by comparing file names/sizes or just reset if needed.
+        # Streamlit's file_uploader maintains state. To detect a "new" upload vs a rerun, we can check session state.
+        
+        # Generate a unique ID for the current upload batch
+        current_upload_id = "".join([f.name + str(f.size) for f in uploaded_files])
+        
+        if st.session_state.get('last_upload_id') != current_upload_id:
+            # New upload detected! Clear previous state
+            logger.info("New upload detected. Clearing previous chat history.")
+            if 'chat_history' in st.session_state:
+                del st.session_state['chat_history']
+            if 'processed_image' in st.session_state:
+                del st.session_state['processed_image']
+            st.session_state['last_upload_id'] = current_upload_id
+
         # Convert to numpy array for processing
         raw_images = []
         for uploaded_file in uploaded_files:
@@ -194,8 +211,13 @@ def main():
             if 'chat_history' in st.session_state:
                 st.write(f"### {t('edit_chat_history')}")
                 
-                # Create a list to track indices to remove
-                indices_to_remove = []
+                # We iterate over a copy of the list to safely modify the original list via index
+                # However, since we use rerun(), we just need to handle one action per run.
+                
+                # Header
+                h_col1, h_col2, h_col3 = st.columns([1, 4, 0.5])
+                h_col1.markdown("**Role**")
+                h_col2.markdown("**Message**")
                 
                 for i, msg in enumerate(st.session_state['chat_history']):
                     col1, col2, col3 = st.columns([1, 4, 0.5])
@@ -214,6 +236,7 @@ def main():
                             key=f"role_{i}",
                             label_visibility="collapsed"
                         )
+                        # Direct update
                         st.session_state['chat_history'][i]['role'] = new_role
                         
                     with col2:
@@ -224,23 +247,16 @@ def main():
                             key=f"text_{i}",
                             label_visibility="collapsed"
                         )
+                        # Direct update
                         st.session_state['chat_history'][i]['text'] = new_text
-                        
+
                     with col3:
                         # Delete button
-                        if st.button("🗑️", key=f"del_{i}", help=t("delete_message")):
-                            indices_to_remove.append(i)
-                
-                # Remove deleted messages
-                if indices_to_remove:
-                    for index in sorted(indices_to_remove, reverse=True):
-                        del st.session_state['chat_history'][index]
-                    st.rerun()
-                
-                # Add new message button
-                if st.button(t("add_message")):
-                    st.session_state['chat_history'].append({'role': 'target', 'text': ''})
-                    st.rerun()
+                        # Use callback for safe deletion
+                        def delete_msg(idx):
+                            st.session_state['chat_history'].pop(idx)
+                            
+                        st.button("🗑️", key=f"del_{i}", help=t("delete_message"), on_click=delete_msg, args=(i,))
                 
                 st.divider()
                 

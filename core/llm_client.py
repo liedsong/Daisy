@@ -46,7 +46,7 @@ class LLMClient:
         Rules:
         1. Context is King: Use context to fix homophones or nonsensical characters (e.g., "hv a nice dy" -> "have a nice day").
         2. Format: Return ONLY the corrected list in valid JSON format.
-        3. STRICTLY PRESERVE TONE: Do NOT change slang, emojis, punctuation style, or informal grammar unless it is clearly an OCR error. We need the original tone for psychological analysis.
+        3. STRICTLY PRESERVE CONTENT: Do NOT change any words, phrases, slang, emojis, punctuation style, or informal grammar unless it is clearly an OCR error (garbage characters).
         4. If a line looks like a timestamp (e.g., "12:00", "Yesterday"), REMOVE it.
         5. Output format: [{"role": "me", "text": "corrected text"}, ...]
         """

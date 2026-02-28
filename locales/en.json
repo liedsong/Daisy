@@ -40,5 +40,7 @@
     "stitching_success": "Successfully stitched {count} images!",
     "correcting_ocr": "Correcting OCR errors with AI...",
     "system_prompt_config": "System Prompt Config",
-    "edit_prompt": "Edit Prompt Template"
+    "edit_prompt": "Edit Prompt Template",
+    "insert_message_tooltip": "Insert new message below"
+}
 }
