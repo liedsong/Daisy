@@ -21,51 +21,12 @@ class LLMClient:
         else:
             self.client = OpenAI(api_key=self.api_key, base_url=self.base_url)
 
-    def generate_reply(self, chat_history, custom_system_prompt=None, ui_language="en"):
+    @staticmethod
+    def get_default_prompt():
         """
-        Generate reply based on chat history.
-        Args:
-            chat_history: List of dict [{'role': 'me'/'target', 'text': '...'}]
-            custom_system_prompt: Optional custom system prompt
-            ui_language: The UI language code ('en' or 'zh') to force response language
-        Returns:
-            dict: {
-                "content": str,          # The actual reply options
-                "reasoning": str|None,   # The reasoning content (if available)
-                "system_prompt": str,    # The system prompt used
-                "user_prompt": str,      # The user prompt used
-                "error": str|None        # Error message if any
-            }
+        Return the default system prompt template.
         """
-        if not self.client:
-            logger.error("OpenAI API Key is missing")
-            return {"error": "Error: OpenAI API Key is missing. Please configure it in the .env file."}
-
-        # Format history for prompt
-        # Take the last 10 messages to provide enough context
-        recent_history = chat_history[-10:]
-        history_text = ""
-        full_text_for_detection = ""
-        
-        for msg in recent_history:
-            role_label = "Me (User)" if msg['role'] == 'me' else "Target (Crush)"
-            history_text += f"{role_label}: {msg['text']}\n"
-            full_text_for_detection += f"{msg['text']} "
-
-        
-        # Determine target language based on UI setting
-        # If UI language is Chinese ('zh'), force Simplified Chinese
-        # If UI language is English ('en'), force English
-        if ui_language == 'zh':
-            target_language_name = "Simplified Chinese"
-        else:
-            target_language_name = "English"
-        
-        # We still detect language for logging/debug purposes
-        detected_lang_code = detect_language(full_text_for_detection)
-        logger.info(f"Detected conversation language: {detected_lang_code}. Forced output language: {target_language_name}")
-
-        system_prompt = f"""
+        return """
         # 角色 
         你是一位拥有心理学和沟通学背景的恋爱指导专家，擅长通过对话分析双方性格特征、情感需求与潜在意图。请以【理性分析+情感共鸣】的复合模式，在收到用户提供的对话记录和对方性别后，分三步完成指导： 
         
@@ -117,6 +78,56 @@ class LLMClient:
         - You MUST generate all reply options in **{target_language_name}**.
         - Do not mix languages unless it's a specific slang term used in that culture.
         """
+
+    def generate_reply(self, chat_history, custom_system_prompt=None, ui_language="en"):
+        """
+        Generate reply based on chat history.
+        Args:
+            chat_history: List of dict [{'role': 'me'/'target', 'text': '...'}]
+            custom_system_prompt: Optional custom system prompt
+            ui_language: The UI language code ('en' or 'zh') to force response language
+        Returns:
+            dict: {
+                "content": str,          # The actual reply options
+                "reasoning": str|None,   # The reasoning content (if available)
+                "system_prompt": str,    # The system prompt used
+                "user_prompt": str,      # The user prompt used
+                "error": str|None        # Error message if any
+            }
+        """
+        if not self.client:
+            logger.error("OpenAI API Key is missing")
+            return {"error": "Error: OpenAI API Key is missing. Please configure it in the .env file."}
+
+        # Format history for prompt
+        # Take the last 10 messages to provide enough context
+        recent_history = chat_history[-10:]
+        history_text = ""
+        full_text_for_detection = ""
+        
+        for msg in recent_history:
+            role_label = "Me (User)" if msg['role'] == 'me' else "Target (Crush)"
+            history_text += f"{role_label}: {msg['text']}\n"
+            full_text_for_detection += f"{msg['text']} "
+
+        
+        # Determine target language based on UI setting
+        # If UI language is Chinese ('zh'), force Simplified Chinese
+        # If UI language is English ('en'), force English
+        if ui_language == 'zh':
+            target_language_name = "Simplified Chinese"
+        else:
+            target_language_name = "English"
+        
+        # We still detect language for logging/debug purposes
+        detected_lang_code = detect_language(full_text_for_detection)
+        logger.info(f"Detected conversation language: {detected_lang_code}. Forced output language: {target_language_name}")
+
+        # Use custom prompt if provided, otherwise use default
+        if custom_system_prompt:
+            system_prompt = custom_system_prompt.replace("{target_language_name}", target_language_name)
+        else:
+            system_prompt = self.get_default_prompt().replace("{target_language_name}", target_language_name)
 
         user_prompt = f"Analyze this chat history and generate replies:\n\n{history_text}"
 

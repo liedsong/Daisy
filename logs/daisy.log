@@ -1,0 +1,13 @@
+2026-02-28 14:45:51,411 - app - INFO - Application started
+2026-02-28 14:47:56,848 - app - INFO - Application started
+2026-02-28 14:48:05,240 - app - INFO - Application started
+2026-02-28 14:48:08,129 - app - INFO - Application started
+2026-02-28 14:48:08,136 - app - INFO - Image uploaded: 373de2b6-4ec8-49c8-86de-7757e20aee00.png, size: 77480 bytes
+2026-02-28 14:48:09,805 - app - INFO - Application started
+2026-02-28 14:48:09,810 - app - INFO - Image uploaded: 373de2b6-4ec8-49c8-86de-7757e20aee00.png, size: 77480 bytes
+2026-02-28 14:48:11,110 - app - INFO - Application started
+2026-02-28 14:48:11,116 - app - INFO - Image uploaded: 373de2b6-4ec8-49c8-86de-7757e20aee00.png, size: 77480 bytes
+2026-02-28 14:48:13,206 - app - INFO - Successfully extracted 4 messages
+2026-02-28 14:48:15,216 - app - INFO - Application started
+2026-02-28 14:48:15,222 - app - INFO - Image uploaded: 373de2b6-4ec8-49c8-86de-7757e20aee00.png, size: 77480 bytes
+2026-02-28 14:48:16,653 - core.llm_client - INFO - Detected conversation language: en. Forced output language: English

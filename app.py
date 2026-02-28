@@ -5,6 +5,7 @@ from core.ocr_engine import OCREngine
 from core.chat_parser import ChatParser
 from core.llm_client import LLMClient
 from core.i18n import t
+from core.logger import get_logger
 from dotenv import load_dotenv
 import os
 
@@ -59,6 +60,7 @@ def display_logs():
             st.sidebar.warning("No logs found.")
 
 def main():
+    logger = get_logger("app")
     logger.info("Application started")
     st.title(t("main_title"))
     st.markdown(t("subtitle"))
